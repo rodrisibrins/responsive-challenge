@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+
+.container {
+    background-color: rgb(221, 221, 221);
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+    background-color: #39A2DB;
+    color: white;
+}
+.logo-container{
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+}
+.logo-container img {
+    width: 10%;
+    height: 10%;
+}
+.logo-container span {
+    font-family: 'Maven Pro';
+    font-size: 2rem;
+}
+.navbar-links ul {
+    display: none;
+    align-items: center;
+    width: 350px;
+}
+.navbar-links ul li a {
+    font-family: sans-serif;
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+}
+.navbar-links ul li a:hover {
+    color: lightgrey;
+}
+.hamburguer-menu i {
+    display: flex;
+    margin-right: 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+}
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.principal-news {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.category-title {
+    flex-wrap: wrap;
+    flex: 0 0 90%;
+    margin: 5% 0% 2%;
+    padding-left: 2%;
+    font-family: sans-serif;
+    font-size: 18px;
+    border-bottom: 1px solid white;
+    color: #555;
+}
+.principal-news article img {
+    width: 100%;
+    height: 25rem;
+}
+.principal-news a {
+    text-decoration: none;
+    color: white;
+}
+.principal-news a:hover {
+    color:skyblue;
+}
+.principal-news article span {
+    padding-left: 2%;
+    font-family: 'Maven Pro';
+    font-size: 24px;
+    background-color: gray;
+}
+.most-viewed-news{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100vw;
+}
+.most-viewed-news article {
+    flex-wrap: wrap;
+    margin: 3% 2%;
+    width: 50vw;
+    height: 25vh;
+    text-align: center;
+    font-family: 'Maven Pro';
+    font-size: 18px;
+    color: gray;
+}
+.most-viewed-news article img {
+    width: 14rem;
+    height: 8rem;
+    margin: 1% 15% 1% 0%;
+}
+.most-viewed-news article span {
+    flex-wrap: wrap;
+}
+.most-viewed-news article span a {
+    text-decoration: none;
+    color: gray;
+}
+.most-viewed-news article span a:hover {
+    color: #39A2DB;
+}
+.ads-container {
+    text-align: center;
+    overflow: hidden;
+}
+.ads-container img {
+    margin: 10px 0px;
+    width: 100vw;
+    height: 10rem;
+}
+.footer-container {
+    justify-content: flex-end;
+    padding: 20px 0px;
+    background-color: #555;
+}
+.social-medias {
+    text-align: center;
+}
+.social-medias i {
+    font-size: 1.5rem;
+    color: white;
+}
+.social-medias i:nth-child(2) {
+    margin: 0% 5% 1%;
+}
+.social-medias i:hover {
+    cursor: pointer;
+    color: #39A2DB;
+}
+.logo-footer {
+    text-align: center;
+}
+.logo-footer img {
+    width: 8%;
+    height: 8%;
+}
+.footer-copyright {
+    margin: 0.5% 20% 0%;
+    text-align: center;
+    color: gray;
+}
+@media only screen and (min-width: 600px){
+    .category-title {
+        font-size: 21px;
+    }
+    .news-container {
+        flex: 2;
+        flex-wrap: nowrap;
+        width: 90vw;
+    }
+    .principal-news {
+        flex-wrap: wrap;
+        flex-grow: 1;
+        order: 2;
+        margin-bottom: 5%;
+        width: 50vw;
+    }
+    .principal-news article img {
+        height: 22rem;
+    }
+    .principal-news article {
+        margin: 2%;
+        height: 25rem;
+    }
+    .most-viewed-news {
+        order: 2;
+        margin: 10% 0% 0% 5%;
+        width: 45vw;
+        height: 10vh;
+    }
+    .most-viewed-news article {
+        display: flex;
+        flex-wrap: wrap;
+        width: 25vw;
+    }
+    .most-viewed-news article {
+        width: 12rem;
+    }
+    .most-viewed-news article img {
+        margin-bottom: 2%;
+        width: 10rem;
+        height: 8rem;
+    }
+    .ads-container {
+        display: none;
+    }
+}
+@media only screen and (min-width: 950px) {
+    .navbar-links ul {
+        display: flex;
+    }
+    .hamburguer-menu i {
+        display: none;
+    }
+    .news-container {
+        flex-wrap: nowrap;
+        width: 90vw;
+    }
+    .principal-news {
+        flex-wrap: wrap;
+        flex-grow: 0;
+        order: 2;
+        margin-bottom: 5%;
+        width: 50vw;
+    }
+    .most-viewed-news {
+        order: 3;
+        margin: 10% 0% 0% 10%;
+        width: 15vw;
+    }
+    .most-viewed-news article {
+        margin-bottom: 25px;
+    }
+    .most-viewed-news article img {
+        margin: 1% 2%;
+    }
+    .ads-container {
+        display: flex;
+        order: 1;
+        margin: 50% 5% 0% 0%;
+        width: 30vw;
+        overflow: visible;
+    }
+}
