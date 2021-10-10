@@ -1,5 +1,5 @@
 # Responsive-CHALLENGE
-Week 03
+Week 03 & 04
 
 ## Project Description:
 The student have to develop a news portal, it has to be responsive in order to adapt to different devices.
@@ -24,7 +24,7 @@ The student have to develop a news portal, it has to be responsive in order to a
 ---
 ## Github page URL
 
-**Version 1.0.0**
+**Version 2.0.0**
 
 https://rodrisibrins.github.io/responsive-challenge/index.html
 ## Developer
