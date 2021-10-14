@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/c4ec97c00c.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <title>Radium News</title>
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/radium-logo.png">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <nav class="navbar">
+                    <div class="logo-container">
+                        <img src="assets/img/logo-radium-news.png" alt="Radium News logo">
+                        <span>Radium News</span>
+                    </div>
+                    <div class="login-icon">
+                        <i class="far fa-user-circle"></i>
+                    </div>
+                    <div class="hamburguer-menu">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="navbar-links">
+                        <ul>
+                            <li><a href="#">Register</a></li>
+                            <li><a href="#">Breaking news</a></li>
+                            <li><a href="#">Tech news</a></li>
+                            <li><a href="#">Most viewed</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <section id="form-section">
+                <div class="form-container">
+                    <h1>Register</h1>
+                    <p>Hola Juan Carlos</p>
+                    <form>
+                        <div id="name-container">
+                            <label id="lab-name" for="name">Full Name</label>
+                            <input type="text" name="user-name" id="name" value="" placeholder="Juan Carlos" required>
+                            <div class="screen"></div>
+                        </div>
+                        <div id="email-container">
+                            <label id="lab-email" for="email">Email</label>
+                            <input type="email" name="user-email" id="email" value="" placeholder="mail@gmail.com" required>
+                            <div class="screen"></div>
+                        </div>
+                        <div id="password-container">
+                            <label id="lab-password" for="password">Password</label>
+                            <input type="password" name="user-password" id="password" value="" placeholder="M001lo21XyZ"
+                                required>
+                            <div class="screen"></div>
+                        </div>
+                        <div id="confirm-password-container">
+                            <label id="lab-confirm" for="confirm-password">Confirm Password</label>
+                            <input type="password" name="user-password" id="confirm-password" value=""
+                                placeholder="M001lo21XyZ" required>
+                            <div class="screen"></div>
+                        </div>
+                        <div id="age-container">
+                            <label id="lab-age" for="age">Age</label>
+                            <input type="text" name="user-age" id="age" value="" placeholder="18" required>
+                            <div class="screen"></div>
+                        </div>
+                        <div id="telephone-container">
+                            <label id="lab-telephone" for="telephone">Telephone</label>
+                            <input type="text" name="user-telephone" id="telephone" value="" placeholder="4653015" required>
+                            <div class="screen"></div>
+                        </div>
+                        <div id="address-container">
+                            <label id="lab-address" for="address">Address</label>
+                            <input type="text" name="user-address" id="address" value="" placeholder="Lainez" required>
+                            <div class="screen"></div>
+                        </div>
+                        <div id="city-container">
+                            <label id="lab-city" for="city">City</label>
+                            <input type="text" name="user-city" id="city" value="" placeholder="Rosario" required>
+                            <div class="screen"></div>
+                        </div>
+                        <div id="postal-container">
+                            <label id="lab-postal-code" for="postal-code">Postal Code</label>
+                            <input type="text" name="user-postal-code" id="postal-code" value="" placeholder="2000"
+                                required>
+                            <div class="screen"></div>
+                        </div>
+                        <div id="dni-container">
+                            <label id="lab-dni" for="dni">DNI</label>
+                            <input type="text" name="user-dni" id="dni" value="" placeholder="35466898" required>
+                            <div class="screen"></div>
+                        </div>
+                        <div class="btn-container">
+                            <input id="submit-btn" type="submit" value="Register" onclick="">
+                            <input id="reset-btn" type="reset" value="Reset">
+                        </div>
+                    </form>
+                    <div id="test" class="test-container">
+                        <h2>Validations Results:</h2>
+                        <ul id="validations">
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <footer>
+                <div class="footer-container">
+                    <div class="social-medias">
+                        <a href="https://www.facebook.com/radiumrocket?_rdc=1&_rdr">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/radiumrocket">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/radium-rocket/">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                    <div class="logo-footer">
+                        <img src="assets/img/logo-radium-news.png" alt="Radium News logo">
+                    </div>
+                    <div class="footer-copyright">
+                        Copyright © 2021 Radium News. All rights reserved.
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script src="js/register.js"></script>
+    </body>
+</html>
