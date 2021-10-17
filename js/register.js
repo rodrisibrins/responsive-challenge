@@ -1,20 +1,58 @@
-let testScreen = document.getElementById("test");
-let textValidations = document.getElementById("validations");
 let form = document.querySelector("form");
-let registerBtn = document.getElementById("submit-btn");
+let greetingMsg = document.getElementById("greeting")
 let nameInp = document.getElementById("name");
 let emailInp = document.getElementById("email");
 let passInp = document.getElementById("password");
 let confirmInp = document.getElementById("confirm-password");
-let nameScreen = document.querySelector("#name-container > div")
-let emailScreen = document.querySelector("#email-container > div")
-let passwordScreen = document.querySelector("#password-container > div")
-let confirmPasswordScreen = document.querySelector("#confirm-password-container > div")
-const symbolsReg = /([@"'.?*+^$#])/;
+let ageInp = document.getElementById("age")
+let telephoneInp = document.getElementById("telephone")
+let addressInp = document.getElementById("address")
+let cityInp = document.getElementById("city")
+let postalCodeInp = document.getElementById("postal-code")
+let dniInp = document.getElementById("dni")
+let nameMsg = document.querySelector("#name-container > div")
+let emailMsg = document.querySelector("#email-container > div")
+let passwordMsg = document.querySelector("#password-container > div")
+let confirmPasswordMsg = document.querySelector("#confirm-password-container > div")
+let ageMsg = document.querySelector("#age-container > div")
+let telephoneMsg = document.querySelector("#telephone-container > div")
+let addressMsg = document.querySelector("#address-container > div")
+let cityMsg = document.querySelector("#city-container > div")
+let postalCodeMsg = document.querySelector("#postal-container > div")
+let dniMsg = document.querySelector("#dni-container > div")
+let testScreen = document.getElementById("test");
+let textValidations = document.getElementById("validations");
+let registerBtn = document.getElementById("submit-btn");
+let resetBtn = document.getElementById("reset-btn")
+const symbolsReg = /([@"'(.?*+^$#-()])/;
 const numbersReg = /[0-9]/;
 const dotCom = /.com/;
 const mailReg = /@/;
 const subdomain = /(?<=@)[a-z]/;
+const lettersReg = /[a-z]/
+
+function correctStyles(correctContainer, inputToValidate) {
+    correctContainer.style.display = "flex";
+    correctContainer.innerHTML = "Correct";
+    correctContainer.style.color = "#5A8643";
+    inputToValidate.style.border = "2px solid springgreen";
+}
+
+function errorStyles(msgContainer, inputSelected) {
+    msgContainer.style.display = "flex";
+    msgContainer.style.color = "#f05945";
+    inputSelected.style.border = "2px solid #f05945";
+}
+
+function testValidationsStyles() {
+    testScreen.style.display ="flex";
+    testScreen.style.border = "2px solid #f05945";
+}
+
+function cleanValidations() {
+    textValidations.innerHTML = "";
+    testScreen.style.border = "2px solid";
+}
 
 function checkName() {
     if (
@@ -26,39 +64,38 @@ function checkName() {
     ) {
         return true;
     } else {
-        return false;
+        const nameErrorMsg = "<li>Invalid Name</li>";
+        if (textValidations.innerHTML != nameErrorMsg) {
+            textValidations.innerHTML += nameErrorMsg;
+        }
     }
 }
-function nameRedStyles() {
-    nameScreen.style.display = "flex";
-    nameScreen.style.color = "#f05945";
-    nameInp.style.border = "2px solid #f05945";
-}
+nameInp.addEventListener("keydown", function () {
+    greetingMsg.style.display = "flex";
+    greetingMsg.innerHTML = "Hola, " + nameInp.value;
+})
 nameInp.addEventListener("blur", function () {
     if (checkName()) {
-        nameScreen.style.display = "flex";
-        nameScreen.innerHTML = "Correct";
-        nameScreen.style.color = "#5A8643";
-        nameInp.style.border = "2px solid springgreen";
+        correctStyles(nameMsg, nameInp);
     } else if (nameInp.value == "") {
-        nameRedStyles();
-        nameScreen.innerHTML = "Complete with name and surname";
+        errorStyles(nameMsg, nameInp);
+        nameMsg.innerHTML = "Complete with name and surname";
     } else if (nameInp.value.match(numbersReg) && nameInp.value.match(symbolsReg)) {
-        nameRedStyles();
-        nameScreen.innerHTML = "Numbers and symbols are not allowed";
+        errorStyles(nameMsg, nameInp);
+        nameMsg.innerHTML = "Numbers and symbols are not allowed";
     } else if (nameInp.value.trim().split(" ").length < 2) {
-        nameRedStyles();
-        nameScreen.innerHTML = "At least 6 characters with a space in between";
+        errorStyles(nameMsg, nameInp);
+        nameMsg.innerHTML = "At least 6 characters with a space in between";
     } else if (nameInp.value.length < 6) {
-        nameRedStyles();
-        nameScreen.innerHTML = "At least 6 characters with a space in between";
+        errorStyles(nameMsg, nameInp);
+        nameMsg.innerHTML = "At least 6 characters with a space in between";
     } else {
-        nameRedStyles();
-        nameScreen.innerHTML = "Numbers and symbols are not allowed";
+        errorStyles(nameMsg, nameInp);
+        nameMsg.innerHTML = "Numbers and symbols are not allowed";
     }
 });
 nameInp.addEventListener("focus", function () {
-    nameScreen.style.display = "none";
+    nameMsg.style.display = "none";
     nameInp.style.border = "2px solid rgba(30, 144, 255, 0.4)";
 });
 
@@ -68,27 +105,24 @@ function checkEmail() {
         emailInp.value.match(dotCom) &&
         emailInp.value.match(subdomain)
     ) {
-        console.log();
         return true;
     } else {
-        return false;
+        const emailErrorMsg = "<li>Invalid email</li>";
+        if (textValidations.innerHTML != emailErrorMsg) {
+            textValidations.innerHTML += emailErrorMsg;
+        }
     }
 }
 emailInp.addEventListener("blur", function () {
     if (checkEmail()) {
-        emailScreen.style.display = "flex";
-        emailScreen.innerHTML = "Correct";
-        emailScreen.style.color = "#5A8643";
-        emailInp.style.border = "2px solid springgreen";
+        correctStyles(emailMsg, emailInp);
     } else {
-        emailScreen.style.display = "flex";
-        emailScreen.innerHTML = "Invalid Email";
-        emailScreen.style.color = "#f05945";
-        emailInp.style.border = "2px solid #f05945";
+        errorStyles(emailMsg, emailInp);
+        emailMsg.innerHTML = "Invalid email";
     }
 });
 emailInp.addEventListener("focus", function () {
-    emailScreen.style.display = "none";
+    emailMsg.style.display = "none";
     emailInp.style.border = "2px solid rgba(30, 144, 255, 0.4)";
 });
 
@@ -98,20 +132,18 @@ function checkPassword() {
         !passInp.value.match(symbolsReg)) {
         return true;
     } else {
-        return false;
+        const passwordErrorMsg = "<li>Invalid Password</li>";
+        if (textValidations.innerHTML != passwordErrorMsg) {
+            textValidations.innerHTML += passwordErrorMsg;
+        }
     }
 }
 passInp.addEventListener("blur", function () {
     if (checkPassword()) {
-        passwordScreen.style.display = "flex";
-        passwordScreen.innerHTML = "Correct";
-        passwordScreen.style.color = "#5A8643";
-        passInp.style.border = "2px solid springgreen";
+        correctStyles(passwordMsg, passInp);
     } else {
-        passwordScreen.style.display = "flex";
-        passwordScreen.style.color = "#f05945";
-        passInp.style.border = "2px solid #f05945";
-        passwordScreen.innerHTML = "At least 8 characters (only letters and numbers)";
+        errorStyles(passwordMsg, passInp);
+        passwordMsg.innerHTML = "At least 8 characters (only letters and numbers)";
     }
 });
 passInp.addEventListener("focus", function () {
@@ -123,23 +155,226 @@ function checkConfirm() {
     if (confirmInp.value != "" && confirmInp.value == passInp.value) {
         return true;
     } else {
-        return false;
+        const confirmErrorMsg = "<li>The password doesn't match</li>";
+        if (textValidations.innerHTML != confirmErrorMsg) {
+            textValidations.innerHTML += confirmErrorMsg;
+        }
     }
 }
 confirmInp.addEventListener("blur", function () {
     if (checkConfirm()) {
-        confirmPasswordScreen.style.display = "flex";
-        confirmPasswordScreen.innerHTML = "Correct";
-        confirmPasswordScreen.style.color = "#5A8643";
-        confirmInp.style.border = "2px solid springgreen";
+        correctStyles(confirmPasswordMsg, confirmInp);
     } else {
-        confirmPasswordScreen.style.display = "flex";
-        confirmPasswordScreen.innerHTML = "Doesn't match the password";
-        confirmPasswordScreen.style.color = "#f05945";
-        confirmInp.style.border = "2px solid #f05945";
+        errorStyles(confirmPasswordMsg, confirmInp);
+        confirmPasswordMsg.innerHTML = "Doesn't match the password";
     }
 });
 confirmInp.addEventListener("focus", function () {
     confirmPasswordScreen.style.display = "none";
     confirmInp.style.border = "2px solid rgba(30, 144, 255, 0.4)";
+});
+
+function checkAge() {
+    if (ageInp.value != "" &&
+        !ageInp.value.match(symbolsReg) &&
+        ageInp.value >= 18 ) {
+        return true;
+    } else {
+        const ageErrorMsg = "<li>Invalid Age</li>";
+        if (textValidations.innerHTML != ageErrorMsg) {
+            textValidations.innerHTML += ageErrorMsg;
+        }
+    }
+}
+ageInp.addEventListener("blur", function () {
+    if (checkAge()) {
+        correctStyles(ageMsg, ageInp);
+    } else {
+        errorStyles(ageMsg, ageInp);
+        ageMsg.innerHTML = "You must have at least 18";
+    }
+});
+ageInp.addEventListener("focus", function () {
+    ageMsg.style.display = "none";
+    ageInp.style.border = "2px solid rgba(30, 144, 255, 0.4)";
+});
+
+function checkTelephone() {
+    if (telephoneInp.value != "" &&
+        !telephoneInp.value.match(symbolsReg) &&
+        telephoneInp.value.length >= 7) {
+        return true;
+    } else {
+        const telephoneErrorMsg = "<li>Invalid Telephone</li>";
+        if (textValidations.innerHTML != telephoneErrorMsg) {
+            textValidations.innerHTML += telephoneErrorMsg;
+        }
+    }
+}
+telephoneInp.addEventListener("blur", function () {
+    if (checkTelephone()) {
+        correctStyles(telephoneMsg, telephoneInp);
+    } else {
+        errorStyles(telephoneMsg, telephoneInp);
+        telephoneMsg.innerHTML = "Must have at least 7 numbers";
+    }
+});
+telephoneInp.addEventListener("focus", function () {
+    telephoneMsg.style.display = "none";
+    telephoneInp.style.border = "2px solid rgba(30, 144, 255, 0.4)";
+});
+
+function checkAddress() {
+    if (addressInp.value !== "" &&
+        addressInp.value.length >= 5 &&
+        addressInp.value.trim().split(" ").length === 2 &&
+        addressInp.value.match(numbersReg) &&
+        addressInp.value.match(lettersReg)) {
+        return true;
+    } else {
+        const addressErrorMsg = "<li>Invalid Address</li>";
+        if (textValidations.innerHTML != addressErrorMsg) {
+            textValidations.innerHTML += addressErrorMsg;
+        }
+    }
+}
+addressInp.addEventListener("blur", function () {
+    if (checkAddress()) {
+        correctStyles(addressMsg, addressInp);
+    } else if (addressInp.value.trim().split(" ").length != 2 ) {
+        errorStyles(addressMsg, addressInp);
+        addressMsg.innerHTML = "At least 5 characters with a space in between";
+    } else if (!addressInp.value.match(numbersReg)) {
+        errorStyles(addressMsg, addressInp);
+        addressMsg.innerHTML = "The address must have the number";
+    } else if (!addressInp.value.match(lettersReg)) {
+        errorStyles(addressMsg, addressInp);
+        addressMsg.innerHTML = "The address must have the street name";
+    }
+});
+addressInp.addEventListener("focus", function () {
+    addressMsg.style.display = "none";
+    addressInp.style.border = "2px solid rgba(30, 144, 255, 0.4)";
+});
+
+function checkCity() {
+    if (cityInp.value !== "" &&
+        cityInp.value.length >= 3 &&
+        !cityInp.value.match(numbersReg)) {
+        return true;
+    } else {
+        const cityErrorMsg = "<li>Invalid City Name</li>";
+        if (textValidations.innerHTML != cityErrorMsg) {
+            textValidations.innerHTML += cityErrorMsg;
+        }
+    }
+}
+cityInp.addEventListener("blur", function () {
+    if (checkCity()) {
+        correctStyles(cityMsg, cityInp);
+    } else {
+        errorStyles(cityMsg, cityInp);
+        cityMsg.innerHTML = "Invalid city name";
+    }
+});
+cityInp.addEventListener("focus", function () {
+    cityMsg.style.display = "none";
+    cityInp.style.border = "2px solid rgba(30, 144, 255, 0.4)";
+});
+
+function checkPostalCode() {
+    if (postalCodeInp.value !== "" &&
+        !ageInp.value.match(symbolsReg) &&
+        postalCodeInp.value.length >= 3) {
+        return true;
+    } else {
+        const postalErrorMsg = "<li>Invalid Postal Code</li>";
+        if (textValidations.innerHTML != postalErrorMsg) {
+            textValidations.innerHTML += postalErrorMsg;
+        }
+    }
+}
+postalCodeInp.addEventListener("blur", function () {
+    if (checkPostalCode()) {
+        correctStyles(postalCodeMsg, postalCodeInp);
+    } else {
+        errorStyles(postalCodeMsg, postalCodeInp);
+        postalCodeMsg.innerHTML = "Invalid Postal Code";
+    }
+});
+postalCodeInp.addEventListener("focus", function () {
+    postalCodeMsg.style.display = "none";
+    postalCodeInp.style.border = "2px solid rgba(30, 144, 255, 0.4)";
+});
+
+function checkDni() {
+    if (dniInp.value !== "" &&
+        !ageInp.value.match(symbolsReg) &&
+        dniInp.value.length >= 7 &&
+        dniInp.value.length <= 8) {
+        return true;
+    } else {
+        const dniErrorMsg = "<li>Invalid DNI</li>";
+        if (textValidations.innerHTML != dniErrorMsg) {
+            textValidations.innerHTML += dniErrorMsg;
+        }
+    }
+}
+dniInp.addEventListener("blur", function () {
+    if (checkDni()) {
+        correctStyles(dniMsg, dniInp);
+    } else {
+        errorStyles(dniMsg, dniInp);
+        dniMsg.innerHTML = "Invalid DNI";
+    }
+});
+dniInp.addEventListener("focus", function () {
+    dniMsg.style.display = "none";
+    dniInp.style.border = "2px solid rgba(30, 144, 255, 0.4)";
+});
+
+function validateAll() {
+    cleanValidations();
+    checkName();
+    checkEmail();
+    checkPassword();
+    checkConfirm();
+    checkAge();
+    checkTelephone();
+    checkAddress();
+    checkCity();
+    checkPostalCode();
+    checkDni();
+}
+
+form.addEventListener("submit", function (e) {
+    if (checkName() && checkEmail() && checkPassword() &&
+        checkConfirm() && checkAge() && checkTelephone() &&
+        checkAddress() && checkCity() && checkPostalCode() &&
+        checkDni()) {
+        cleanValidations();
+        testScreen.style.display = "flex";
+        testScreen.style.border = "2px solid springgreen";
+        textValidations.innerHTML +=
+            `<li>Full Name: ${nameInp.value}</li>` +
+            `<li>Email: ${emailInp.value}</li>` +
+            `<li>Password: ${passInp.value}</li>` +
+            `<li>Confirm Password: ${confirmInp.value}</li>` +
+            `<li>Age: ${ageInp.value}</li>` +
+            `<li>Telephone: ${telephoneInp.value}</li>` +
+            `<li>Address: ${addressInp.value}</li>` +
+            `<li>City: ${cityInp.value}</li>` +
+            `<li>Postal Code: ${postalCodeInp.value}</li>` +
+            `<li>DNI: ${dniInp.value}</li>`;
+        e.preventDefault();
+    } else {
+        validateAll();
+        testValidationsStyles();
+        e.preventDefault();
+    }
+});
+
+resetBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    location.reload();
 });

@@ -48,6 +48,9 @@
     font-size: 1.5rem;
     color: white;
 }
+.login-icon a {
+    text-decoration: none;
+}
 .news-container {
     display: flex;
     flex-wrap: wrap;
@@ -197,6 +200,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
     width: 100%;
 }
 h1 {
@@ -205,9 +209,11 @@ h1 {
     font-size: 1.5rem;
     color: rgb(95, 93, 93);
 }
-.greeting {
+.form-container p {
     display: none;
     margin-top: 10px;
+    font-family: sans-serif;
+    color:rgb(57, 162, 219);
 }
 form {
     display: flex;
@@ -222,6 +228,7 @@ form {
 form div {
     display: flex;
     flex-direction: column;
+    margin: 5px 0px 10px;
     padding: 0px 20px;
 }
 form div label {
@@ -230,8 +237,9 @@ form div label {
     font-weight: bold;
     color: rgb(95, 93, 93);
 }
-.screen {
+.msg-container {
     display: none;
+    margin: 0;
     padding: 0;
     font-family: sans-serif;
     font-size: 0.85rem;
@@ -262,7 +270,18 @@ form div label {
     width: 50%;
     border: 2px solid springgreen;
     border-radius: 7px;
-    background-color: #7a9ba1;
+    background-color: #637b80;
+}
+h2 {
+    margin-bottom: 10px;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+}
+.test-container ul li {
+    margin-bottom: 5px;
+    font-family: sans-serif;
+    font-size: 0.95rem;
+    color: white;
 }
 .footer-container {
     padding: 20px 0px;

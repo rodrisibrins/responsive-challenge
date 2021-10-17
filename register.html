@@ -18,7 +18,9 @@
                         <span>Radium News</span>
                     </div>
                     <div class="login-icon">
-                        <i class="far fa-user-circle"></i>
+                        <a href="register.html">
+                            <i class="far fa-user-circle"></i>
+                        </a>
                     </div>
                     <div class="hamburguer-menu">
                         <i class="fas fa-bars"></i>
@@ -36,60 +38,60 @@
             <section id="form-section">
                 <div class="form-container">
                     <h1>Register</h1>
-                    <p class="greeting">Hola Juan Carlos</p>
+                    <p id="greeting"></p>
                     <form>
                         <div id="name-container">
                             <label id="lab-name" for="name">Full Name</label>
                             <input type="text" name="user-name" id="name" value="" placeholder="Juan Carlos" required>
-                            <div class="screen"></div>
+                            <div class="msg-container"></div>
                         </div>
                         <div id="email-container">
                             <label id="lab-email" for="email">Email</label>
                             <input type="email" name="user-email" id="email" value="" placeholder="mail@gmail.com" required>
-                            <div class="screen"></div>
+                            <div class="msg-container"></div>
                         </div>
                         <div id="password-container">
                             <label id="lab-password" for="password">Password</label>
-                            <input type="password" name="user-password" id="password" value="" placeholder="M001lo21XyZ"
+                            <input type="password" name="user-password" id="password" value="" placeholder="example11"
                                 required>
-                            <div class="screen"></div>
+                            <div class="msg-container"></div>
                         </div>
                         <div id="confirm-password-container">
                             <label id="lab-confirm" for="confirm-password">Confirm Password</label>
                             <input type="password" name="user-password" id="confirm-password" value=""
-                                placeholder="M001lo21XyZ" required>
-                            <div class="screen"></div>
+                                placeholder="example11" required>
+                            <div class="msg-container"></div>
                         </div>
                         <div id="age-container">
                             <label id="lab-age" for="age">Age</label>
-                            <input type="text" name="user-age" id="age" value="" placeholder="18" required>
-                            <div class="screen"></div>
+                            <input type="number" name="user-age" id="age" value="" placeholder="18" required>
+                            <div class="msg-container"></div>
                         </div>
                         <div id="telephone-container">
                             <label id="lab-telephone" for="telephone">Telephone</label>
-                            <input type="text" name="user-telephone" id="telephone" value="" placeholder="4653015" required>
-                            <div class="screen"></div>
+                            <input type="number" name="user-telephone" id="telephone" value="" placeholder="4653015" required>
+                            <div class="msg-container"></div>
                         </div>
                         <div id="address-container">
                             <label id="lab-address" for="address">Address</label>
                             <input type="text" name="user-address" id="address" value="" placeholder="Lainez" required>
-                            <div class="screen"></div>
+                            <div class="msg-container"></div>
                         </div>
                         <div id="city-container">
                             <label id="lab-city" for="city">City</label>
                             <input type="text" name="user-city" id="city" value="" placeholder="Rosario" required>
-                            <div class="screen"></div>
+                            <div class="msg-container"></div>
                         </div>
                         <div id="postal-container">
                             <label id="lab-postal-code" for="postal-code">Postal Code</label>
-                            <input type="text" name="user-postal-code" id="postal-code" value="" placeholder="2000"
+                            <input type="number" name="user-postal-code" id="postal-code" value="" placeholder="2000"
                                 required>
-                            <div class="screen"></div>
+                            <div class="msg-container"></div>
                         </div>
                         <div id="dni-container">
                             <label id="lab-dni" for="dni">DNI</label>
-                            <input type="text" name="user-dni" id="dni" value="" placeholder="35466898" required>
-                            <div class="screen"></div>
+                            <input type="number" name="user-dni" id="dni" value="" placeholder="35466898" required>
+                            <div class="msg-container"></div>
                         </div>
                         <div class="btn-container">
                             <input id="submit-btn" type="submit" value="Register" onclick="">
