@@ -6,6 +6,7 @@ The student have to develop a news portal, it has to be responsive in order to a
 has a register form for new users. The fields from the form has the proper validations.
 
 **Validations logic**
+
 First of all i declare the variables which contains the selectors of the elements from the DOM, as well as the regex.
 
 ![Screenshot from 2021-10-17 19-37-49](https://user-images.githubusercontent.com/90876581/137647931-51f86a16-a08f-4088-8413-17c115fa30c5.png)
