@@ -24,6 +24,11 @@ let testScreen = document.getElementById("test");
 let textValidations = document.getElementById("validations");
 let registerBtn = document.getElementById("submit-btn");
 let resetBtn = document.getElementById("reset-btn")
+let modalContainer = document.getElementById("modal-subscription");
+let modalContent = document.getElementsByClassName("modal-content")[0];
+let modalTitle = document.querySelector(".modal-content > h3");
+let modalData = document.querySelector(".modal-content > ul")
+let closeBtn = document.getElementsByClassName("close-btn")[0];
 const symbolsReg = /([@"'(.?*+^$#-()])/;
 const numbersReg = /[0-9]/;
 const dotCom = /.com/;
@@ -45,7 +50,7 @@ function errorStyles(msgContainer, inputSelected) {
 }
 
 function testValidationsStyles() {
-    testScreen.style.display ="flex";
+    testScreen.style.display = "flex";
     testScreen.style.border = "2px solid #f05945";
 }
 
@@ -53,6 +58,54 @@ function cleanValidations() {
     textValidations.innerHTML = "";
     testScreen.style.border = "2px solid";
 }
+
+function successfullModal(userInfo) {
+    let jsonToString = JSON.stringify(userInfo, null, 2);
+    modalContainer.style.display = "block";
+    modalTitle.innerHTML = "Successfull Subscription! :)";
+    modalData.innerHTML = `<li>${jsonToString}</li>`;
+    localStorage.setItem("userName", nameInp.value);
+    localStorage.setItem("userEmail", emailInp.value);
+    localStorage.setItem("userPassword", passInp.value);
+    localStorage.setItem("userConfirmPassword", confirmInp.value);
+    localStorage.setItem("userAge", ageInp.value);
+    localStorage.setItem("userTelephone", telephoneInp.value);
+    localStorage.setItem("userAddress", addressInp.value);
+    localStorage.setItem("userCity", cityInp.value);
+    localStorage.setItem("userPostalCode", postalCodeInp.value);
+    localStorage.setItem("userDni", dniInp.value);
+}
+
+function errorModal(errorInfo) {
+    modalContainer.style.display = "block";
+    modalTitle.innerHTML = "Sorry, there was an error :(";
+    modalData.innerHTML = `<li>${errorInfo}</li>`;
+    modalContent.style.border = "4px solid rgb(240, 110, 100)"
+}
+
+window.addEventListener("load", function () {
+    let currentUserName = localStorage.getItem("userName");
+    let currentUserEmail = localStorage.getItem("userEmail");
+    let currentUserPassword = localStorage.getItem("userPassword");
+    let currentUserConfirmPass = localStorage.getItem("userConfirmPassword");
+    let currentUserAge = localStorage.getItem("userAge");
+    let currentUserTelephone = localStorage.getItem("userTelephone");
+    let currentUserAddress = localStorage.getItem("userAddress");
+    let currentUserCity = localStorage.getItem("userCity");
+    let currentUserPostalCode = localStorage.getItem("userPostalCode");
+    let currentUserDni = localStorage.getItem("userDni");
+
+    nameInp.value = currentUserName;
+    emailInp.value = currentUserEmail;
+    passInp.value = currentUserPassword;
+    confirmInp.value = currentUserConfirmPass;
+    ageInp.value = currentUserAge;
+    telephoneInp.value = currentUserTelephone;
+    cityInp.value = currentUserCity;
+    postalCodeInp.value = currentUserPostalCode;
+    dniInp.value = currentUserDni;
+    addressInp.value = currentUserAddress;
+})
 
 function checkName() {
     if (
@@ -147,7 +200,7 @@ passInp.addEventListener("blur", function () {
     }
 });
 passInp.addEventListener("focus", function () {
-    passwordScreen.style.display = "none";
+    passwordMsg.style.display = "none";
     passInp.style.border = "2px solid rgba(30, 144, 255, 0.4)";
 });
 
@@ -170,14 +223,14 @@ confirmInp.addEventListener("blur", function () {
     }
 });
 confirmInp.addEventListener("focus", function () {
-    confirmPasswordScreen.style.display = "none";
+    confirmPasswordMsg.style.display = "none";
     confirmInp.style.border = "2px solid rgba(30, 144, 255, 0.4)";
 });
 
 function checkAge() {
     if (ageInp.value != "" &&
         !ageInp.value.match(symbolsReg) &&
-        ageInp.value >= 18 ) {
+        ageInp.value >= 18) {
         return true;
     } else {
         const ageErrorMsg = "<li>Invalid Age</li>";
@@ -241,7 +294,7 @@ function checkAddress() {
 addressInp.addEventListener("blur", function () {
     if (checkAddress()) {
         correctStyles(addressMsg, addressInp);
-    } else if (addressInp.value.trim().split(" ").length != 2 ) {
+    } else if (addressInp.value.trim().split(" ").length != 2) {
         errorStyles(addressMsg, addressInp);
         addressMsg.innerHTML = "At least 5 characters with a space in between";
     } else if (!addressInp.value.match(numbersReg)) {
@@ -366,6 +419,19 @@ form.addEventListener("submit", function (e) {
             `<li>City: ${cityInp.value}</li>` +
             `<li>Postal Code: ${postalCodeInp.value}</li>` +
             `<li>DNI: ${dniInp.value}</li>`;
+        modalContainer.style.display
+        const baseUrl = `http://curso-dev-2021.herokuapp.com/newsletter?` +
+            `name=${nameInp.value}&email=${emailInp.value}&address=${addressInp.value}` +
+            `&password=${passInp.value}&age=${ageInp.value}&telephone=${telephoneInp.value}` +
+            `&city=${cityInp.value}&postalcode=${postalCodeInp.value}&dni=${dniInp.value}`;
+        fetch(baseUrl)
+            .then(response =>
+                response.json())
+            .then(data =>
+                successfullModal(data))
+            .catch((error) => {
+                errorModal(error);
+            });
         e.preventDefault();
     } else {
         validateAll();
@@ -374,7 +440,17 @@ form.addEventListener("submit", function (e) {
     }
 });
 
-resetBtn.addEventListener("click", function(e){
+resetBtn.addEventListener("click", function (e) {
     e.preventDefault();
     location.reload();
 });
+
+closeBtn.addEventListener("click", function () {
+    modalContainer.style.display = "none";
+})
+
+window.addEventListener("click", function (e) {
+    if (e.target == modalContainer) {
+        modalContainer.style.display = "none";
+    }
+})
