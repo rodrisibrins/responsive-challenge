@@ -125,7 +125,7 @@ function checkName() {
 }
 nameInp.addEventListener("keydown", function () {
     greetingMsg.style.display = "flex";
-    greetingMsg.innerHTML = "Hola, " + nameInp.value;
+    greetingMsg.innerHTML = "Hello, " + nameInp.value;
 })
 nameInp.addEventListener("blur", function () {
     if (checkName()) {
@@ -420,7 +420,7 @@ form.addEventListener("submit", function (e) {
             `<li>Postal Code: ${postalCodeInp.value}</li>` +
             `<li>DNI: ${dniInp.value}</li>`;
         modalContainer.style.display
-        const baseUrl = `http://curso-dev-2021.herokuapp.com/newsletter?` +
+        const baseUrl = `https://curso-dev-2021.herokuapp.com/newsletter?` +
             `name=${nameInp.value}&email=${emailInp.value}&address=${addressInp.value}` +
             `&password=${passInp.value}&age=${ageInp.value}&telephone=${telephoneInp.value}` +
             `&city=${cityInp.value}&postalcode=${postalCodeInp.value}&dni=${dniInp.value}`;
