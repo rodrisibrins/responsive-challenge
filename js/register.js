@@ -1,40 +1,40 @@
-let form = document.querySelector("form");
-let greetingMsg = document.getElementById("greeting")
-let nameInp = document.getElementById("name");
-let emailInp = document.getElementById("email");
-let passInp = document.getElementById("password");
-let confirmInp = document.getElementById("confirm-password");
-let ageInp = document.getElementById("age")
-let telephoneInp = document.getElementById("telephone")
-let addressInp = document.getElementById("address")
-let cityInp = document.getElementById("city")
-let postalCodeInp = document.getElementById("postal-code")
-let dniInp = document.getElementById("dni")
-let nameMsg = document.querySelector("#name-container > div")
-let emailMsg = document.querySelector("#email-container > div")
-let passwordMsg = document.querySelector("#password-container > div")
-let confirmPasswordMsg = document.querySelector("#confirm-password-container > div")
-let ageMsg = document.querySelector("#age-container > div")
-let telephoneMsg = document.querySelector("#telephone-container > div")
-let addressMsg = document.querySelector("#address-container > div")
-let cityMsg = document.querySelector("#city-container > div")
-let postalCodeMsg = document.querySelector("#postal-container > div")
-let dniMsg = document.querySelector("#dni-container > div")
-let testScreen = document.getElementById("test");
-let textValidations = document.getElementById("validations");
-let registerBtn = document.getElementById("submit-btn");
-let resetBtn = document.getElementById("reset-btn")
-let modalContainer = document.getElementById("modal-subscription");
-let modalContent = document.getElementsByClassName("modal-content")[0];
-let modalTitle = document.querySelector(".modal-content > h3");
-let modalData = document.querySelector(".modal-content > ul")
-let closeBtn = document.getElementsByClassName("close-btn")[0];
-const symbolsReg = /([@"'(.?*+^$#-()])/;
-const numbersReg = /[0-9]/;
-const dotCom = /.com/;
-const mailReg = /@/;
-const subdomain = /(?<=@)[a-z]/;
-const lettersReg = /[a-z]/
+var form = document.querySelector("form");
+var greetingMsg = document.getElementById("greeting")
+var nameInp = document.getElementById("name");
+var emailInp = document.getElementById("email");
+var passInp = document.getElementById("password");
+var confirmInp = document.getElementById("confirm-password");
+var ageInp = document.getElementById("age")
+var telephoneInp = document.getElementById("telephone")
+var addressInp = document.getElementById("address")
+var cityInp = document.getElementById("city")
+var postalCodeInp = document.getElementById("postal-code")
+var dniInp = document.getElementById("dni")
+var nameMsg = document.querySelector("#name-container > div")
+var emailMsg = document.querySelector("#email-container > div")
+var passwordMsg = document.querySelector("#password-container > div")
+var confirmPasswordMsg = document.querySelector("#confirm-password-container > div")
+var ageMsg = document.querySelector("#age-container > div")
+var telephoneMsg = document.querySelector("#telephone-container > div")
+var addressMsg = document.querySelector("#address-container > div")
+var cityMsg = document.querySelector("#city-container > div")
+var postalCodeMsg = document.querySelector("#postal-container > div")
+var dniMsg = document.querySelector("#dni-container > div")
+var testScreen = document.getElementById("test");
+var textValidations = document.getElementById("validations");
+var registerBtn = document.getElementById("submit-btn");
+var resetBtn = document.getElementById("reset-btn")
+var modalContainer = document.getElementById("modal-subscription");
+var modalContent = document.getElementsByClassName("modal-content")[0];
+var modalTitle = document.querySelector(".modal-content > h3");
+var modalData = document.querySelector(".modal-content > ul")
+var closeBtn = document.getElementsByClassName("close-btn")[0];
+var symbolsReg = /([@"'(.?*+^$#-()])/;
+var numbersReg = /[0-9]/;
+var dotCom = /.com/;
+var mailReg = /@/;
+var subdomain = /(?<=@)[a-z]/;
+var lettersReg = /[a-z]/
 
 function correctStyles(correctContainer, inputToValidate) {
     correctContainer.style.display = "flex";
@@ -60,7 +60,7 @@ function cleanValidations() {
 }
 
 function successfullModal(userInfo) {
-    let jsonToString = JSON.stringify(userInfo, null, 2);
+    var jsonToString = JSON.stringify(userInfo, null, 2);
     modalContainer.style.display = "block";
     modalTitle.innerHTML = "Successfull Subscription! :)";
     modalData.innerHTML = `<li>${jsonToString}</li>`;
@@ -84,16 +84,16 @@ function errorModal(errorInfo) {
 }
 
 window.addEventListener("load", function () {
-    let currentUserName = localStorage.getItem("userName");
-    let currentUserEmail = localStorage.getItem("userEmail");
-    let currentUserPassword = localStorage.getItem("userPassword");
-    let currentUserConfirmPass = localStorage.getItem("userConfirmPassword");
-    let currentUserAge = localStorage.getItem("userAge");
-    let currentUserTelephone = localStorage.getItem("userTelephone");
-    let currentUserAddress = localStorage.getItem("userAddress");
-    let currentUserCity = localStorage.getItem("userCity");
-    let currentUserPostalCode = localStorage.getItem("userPostalCode");
-    let currentUserDni = localStorage.getItem("userDni");
+    var currentUserName = localStorage.getItem("userName");
+    var currentUserEmail = localStorage.getItem("userEmail");
+    var currentUserPassword = localStorage.getItem("userPassword");
+    var currentUserConfirmPass = localStorage.getItem("userConfirmPassword");
+    var currentUserAge = localStorage.getItem("userAge");
+    var currentUserTelephone = localStorage.getItem("userTelephone");
+    var currentUserAddress = localStorage.getItem("userAddress");
+    var currentUserCity = localStorage.getItem("userCity");
+    var currentUserPostalCode = localStorage.getItem("userPostalCode");
+    var currentUserDni = localStorage.getItem("userDni");
 
     nameInp.value = currentUserName;
     emailInp.value = currentUserEmail;
@@ -117,7 +117,7 @@ function checkName() {
     ) {
         return true;
     } else {
-        const nameErrorMsg = "<li>Invalid Name</li>";
+        var nameErrorMsg = "<li>Invalid Name</li>";
         if (textValidations.innerHTML != nameErrorMsg) {
             textValidations.innerHTML += nameErrorMsg;
         }
@@ -160,7 +160,7 @@ function checkEmail() {
     ) {
         return true;
     } else {
-        const emailErrorMsg = "<li>Invalid email</li>";
+        var emailErrorMsg = "<li>Invalid email</li>";
         if (textValidations.innerHTML != emailErrorMsg) {
             textValidations.innerHTML += emailErrorMsg;
         }
@@ -185,7 +185,7 @@ function checkPassword() {
         !passInp.value.match(symbolsReg)) {
         return true;
     } else {
-        const passwordErrorMsg = "<li>Invalid Password</li>";
+        var passwordErrorMsg = "<li>Invalid Password</li>";
         if (textValidations.innerHTML != passwordErrorMsg) {
             textValidations.innerHTML += passwordErrorMsg;
         }
@@ -208,7 +208,7 @@ function checkConfirm() {
     if (confirmInp.value != "" && confirmInp.value == passInp.value) {
         return true;
     } else {
-        const confirmErrorMsg = "<li>The password doesn't match</li>";
+        var confirmErrorMsg = "<li>The password doesn't match</li>";
         if (textValidations.innerHTML != confirmErrorMsg) {
             textValidations.innerHTML += confirmErrorMsg;
         }
@@ -233,7 +233,7 @@ function checkAge() {
         ageInp.value >= 18) {
         return true;
     } else {
-        const ageErrorMsg = "<li>Invalid Age</li>";
+        var ageErrorMsg = "<li>Invalid Age</li>";
         if (textValidations.innerHTML != ageErrorMsg) {
             textValidations.innerHTML += ageErrorMsg;
         }
@@ -258,7 +258,7 @@ function checkTelephone() {
         telephoneInp.value.length >= 7) {
         return true;
     } else {
-        const telephoneErrorMsg = "<li>Invalid Telephone</li>";
+        var telephoneErrorMsg = "<li>Invalid Telephone</li>";
         if (textValidations.innerHTML != telephoneErrorMsg) {
             textValidations.innerHTML += telephoneErrorMsg;
         }
@@ -285,7 +285,7 @@ function checkAddress() {
         addressInp.value.match(lettersReg)) {
         return true;
     } else {
-        const addressErrorMsg = "<li>Invalid Address</li>";
+        var addressErrorMsg = "<li>Invalid Address</li>";
         if (textValidations.innerHTML != addressErrorMsg) {
             textValidations.innerHTML += addressErrorMsg;
         }
@@ -316,7 +316,7 @@ function checkCity() {
         !cityInp.value.match(numbersReg)) {
         return true;
     } else {
-        const cityErrorMsg = "<li>Invalid City Name</li>";
+        var cityErrorMsg = "<li>Invalid City Name</li>";
         if (textValidations.innerHTML != cityErrorMsg) {
             textValidations.innerHTML += cityErrorMsg;
         }
@@ -341,7 +341,7 @@ function checkPostalCode() {
         postalCodeInp.value.length >= 3) {
         return true;
     } else {
-        const postalErrorMsg = "<li>Invalid Postal Code</li>";
+        var postalErrorMsg = "<li>Invalid Postal Code</li>";
         if (textValidations.innerHTML != postalErrorMsg) {
             textValidations.innerHTML += postalErrorMsg;
         }
@@ -367,7 +367,7 @@ function checkDni() {
         dniInp.value.length <= 8) {
         return true;
     } else {
-        const dniErrorMsg = "<li>Invalid DNI</li>";
+        var dniErrorMsg = "<li>Invalid DNI</li>";
         if (textValidations.innerHTML != dniErrorMsg) {
             textValidations.innerHTML += dniErrorMsg;
         }
@@ -420,7 +420,7 @@ form.addEventListener("submit", function (e) {
             `<li>Postal Code: ${postalCodeInp.value}</li>` +
             `<li>DNI: ${dniInp.value}</li>`;
         modalContainer.style.display
-        const baseUrl = `https://curso-dev-2021.herokuapp.com/newsletter?` +
+        var baseUrl = `https://curso-dev-2021.herokuapp.com/newsletter?` +
             `name=${nameInp.value}&email=${emailInp.value}&address=${addressInp.value}` +
             `&password=${passInp.value}&age=${ageInp.value}&telephone=${telephoneInp.value}` +
             `&city=${cityInp.value}&postalcode=${postalCodeInp.value}&dni=${dniInp.value}`;

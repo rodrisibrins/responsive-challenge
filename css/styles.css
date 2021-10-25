@@ -219,7 +219,7 @@ form {
     display: flex;
     flex-direction: column;
     margin: 10px 0px;
-    width: 50%;
+    width: 70%;
     border-radius: 10px;
     border: 8px solid #0d94dd46;
     background: rgba( 255, 255, 255, 0.2);
@@ -237,6 +237,9 @@ form div label {
     font-weight: bold;
     color: rgb(95, 93, 93);
 }
+form input {
+    font-size: 18px;
+}
 .msg-container {
     display: none;
     margin: 0;
@@ -246,7 +249,7 @@ form div label {
     color: #ce1212;
 }
 .btn-container input {
-    margin: 0px 10px 10px;
+    margin: 0px 50px 10px;
     padding: 5px;
     border: 4px solid darkgrey;
     font-size: 16px;
